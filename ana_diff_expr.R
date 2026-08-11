@@ -201,8 +201,8 @@ colnames(design_vp) <- gsub("group", "", colnames(design_vp))
 vobjGenes <- voom(dge_filt_norm, design_vp)
 
 # Define variance partition formula
-form <- ~ (1 | group) + (1 | Batch_Extraction) + RIN + rRNA_ratio +
-          Age + (1 | Sex) + (1 | Lane) +
+form <- ~ group + Batch_Extraction + RIN + rRNA_ratio +
+          Age + Sex + Lane +
           Granulocytes + CD19B + CD4T + CD8T + NK + Mono
 
 varPart <- fitExtractVarPartModel(vobjGenes, form, info2)
@@ -268,7 +268,8 @@ table(out$pref)
 # --- 8a. Three-group comparison (PunanBatu vs PunanTubu vs Lundayeh) ---
 
 # Build three-group design matrix
-design_3grp <- model.matrix(~ 0 + group, info2)
+design_3grp <- model.matrix(~ 0 + group + RIN + rRNA_ratio + Age + Sex + Granulocytes + CD19B + CD4T + CD8T + NK + Mono,
+  info2)
 colnames(design_3grp) <- gsub("group", "", colnames(design_3grp))
 
 # Define pairwise contrasts
@@ -319,7 +320,8 @@ topTable_PT_LDY <- topTable(efit, coef = 3, n = Inf, sort.by = "p") %>%
 
 # --- 8b. Ancestry comparison (Punan vs Lundayeh) ---
 
-design_anc <- model.matrix(~ 0 + anc, dge_filt_norm$samples)
+design_anc <- model.matrix(~ 0 + anc + RIN + rRNA_ratio + Age + Sex + Granulocytes + CD19B + CD4T + CD8T + NK + Mono, 
+  dge_filt_norm$samples)
 colnames(design_anc) <- gsub("anc", "", colnames(design_anc))
 
 contr.matrix.anc <- makeContrasts(
@@ -341,7 +343,8 @@ topTable_PUN_LDY <- topTable(efit_anc, coef = 1, n = Inf, sort.by = "p") %>%
 
 # --- 8c. Lifestyle comparison (Hunter-Gatherer vs Agriculturalist) ---
 
-design_lst <- model.matrix(~ 0 + lst, dge_filt_norm$samples)
+design_lst <- model.matrix(~ 0 + lst + RIN + rRNA_ratio + Age + Sex + Granulocytes + CD19B + CD4T + CD8T + NK + Mono,
+ , dge_filt_norm$samples)
 colnames(design_lst) <- gsub("lst", "", colnames(design_lst))
 
 contr.matrix.lst <- makeContrasts(
