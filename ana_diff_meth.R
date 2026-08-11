@@ -221,9 +221,9 @@ for (i in c("PB_PT", "PB_LDY", "PT_LDY")) {
 }
 
 
-# ==============================================
-# 7. Subset to RNA-seq Matched Samples (n = 78)
-# ==============================================
+# =====================================
+# 7. Subset to RNA-seq Matched Samples 
+# =====================================
 
 # Load RNA-seq deconvolution results and clean sample names
 deconv_rna <- read_tsv(here("..", "rna", "counts", "sanity_check3",
