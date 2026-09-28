@@ -2,8 +2,8 @@
 
 This repository contains the analysis scripts accompanying the manuscript:
 
-**Evolutionary Impact of Lifestyle Transitions in Borneo's Hunter-Gatherers**
-*Kusuma et al.  in preparation*
+**Rapid convergence toward an agriculturalist regulatory landscape following lifestyle transition in Bornean hunter-gatherers**
+*Kusuma et al. in bioRxiv doi: 10.64898/2026.08.09.743820*
 ---
 
 ## Overview
@@ -14,4 +14,4 @@ We profiled transcriptomic and epigenomic variation across three population grou
 
 ## Contact
 
-Pradiptajati Kusuma: pai.kusuma@svi.edu.au or pradiptajati.kusuma@mrinstitute.org
+Pradiptajati Kusuma: pai.kusuma@svi.edu.au
